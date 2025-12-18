@@ -9,22 +9,23 @@ public class Enemy : MonoBehaviour
     private float Heal = 10;
 
     [Header("AI Setting")]
-    private float EnemyTurnTimer = 3;
+    private float EnemyTurnTimer = 2;
     private bool Usedcard = false;
 
     private void Update()
     {
-        if(GameManager.instance.PlayersTurn == false)
+        if (!GameManager.instance.PlayersTurn && !Usedcard)
         {
+            Usedcard = true;
             Attack();
         }
 
-        if( GameManager.instance.EnemyHP <= 0)
+        if (GameManager.instance.EnemyHP <= 0)
         {
-
             Destroy(gameObject);
         }
     }
+
     private void Attack()
     {
 
@@ -57,6 +58,7 @@ public class Enemy : MonoBehaviour
     IEnumerator EnemyTimer(float time)
     {
         yield return new WaitForSeconds(time);
+        Usedcard = false;
         GameManager.instance.EndTurn();
     }
 }

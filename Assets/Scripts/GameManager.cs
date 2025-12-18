@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject PauseMenu;
     [SerializeField] private GameObject ResultScreen;
 
+    [Header("Objects")]
+    [SerializeField] public GameObject BlockObject;
     
  
     void Start()
@@ -96,7 +98,7 @@ public class GameManager : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        Instantiate(EnemyObject, EnemySpawnLoc.transform.position, Quaternion.identity);
+        Instantiate(EnemyObject, EnemySpawnLoc.transform.position, EnemySpawnLoc.rotation);
         ActiveEnemy = GameObject.FindGameObjectWithTag("Enemy");
         Debug.Log("enemy spawned");
     }
