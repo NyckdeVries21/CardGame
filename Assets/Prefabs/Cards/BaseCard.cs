@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "BaseCard", menuName = "Scriptable Objects/BaseCard")]
 public class BaseCard : ScriptableObject

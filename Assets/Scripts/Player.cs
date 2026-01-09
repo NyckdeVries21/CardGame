@@ -15,12 +15,6 @@ public class Player : MonoBehaviour
     
     private void Update()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && GameManager.instance.PlayersTurn== true)
-        {
-            Instantiate(GameManager.instance.BlockObject, blockLoc.transform.position, Quaternion.identity);
-            GameObject spawnedObject = GameObject.FindGameObjectWithTag("Block");
-            Destroy(spawnedObject, 0.5f);
-        } else { return; }
 
     }
     public void Attack()
@@ -37,6 +31,7 @@ public class Player : MonoBehaviour
         if (!GameManager.instance.PlayersTurn) { return; }
         // destroy
         Debug.Log("block de attack");
+        SpawnBlockobject();
         GameManager.instance.EndTurn();
     }
 
@@ -53,6 +48,12 @@ public class Player : MonoBehaviour
         GameManager.instance.EndTurn();
     }
 
+    private void SpawnBlockobject()
+    {
+        Instantiate(GameManager.instance.BlockObject, blockLoc.transform.position, Quaternion.identity);
+        GameObject spawnedObject = GameObject.FindGameObjectWithTag("Block");
+        Destroy(spawnedObject, 0.5f);
+    }
 
 
 }

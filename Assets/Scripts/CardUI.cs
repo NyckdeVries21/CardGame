@@ -5,15 +5,22 @@ using UnityEngine.UI;
 
 public class CardUI : MonoBehaviour
 {
-    [Header("S-Object")]
-    [SerializeField] private ScriptableObject card;
+    [Header("BaseCard")]
+    [SerializeField] private BaseCard card;
 
     [Header("Card -> UI")]
-    [SerializeField] private TextMeshProUGUI cardName;
-    [SerializeField] private TextMeshProUGUI cardAmount;
-    [SerializeField] private Image cardPicture;
-    [SerializeField] private TextMeshProUGUI cardTarget;
-    [SerializeField] private TextMeshProUGUI cardInfo;
+    [SerializeField] private TextMeshProUGUI cardNameUI;
+    [SerializeField] private TextMeshProUGUI cardAmountUI;
+    [SerializeField] private Image cardPictureUI;
+    [SerializeField] private TextMeshProUGUI cardTargetUI;
+    [SerializeField] private TextMeshProUGUI cardInfoUI;
 
-
+    private void Start()
+    {
+        cardNameUI.text = card.CardName;
+        cardAmountUI.text = card.CardAmount;
+        cardPictureUI.sprite = card.CardPicture;
+        cardTargetUI.text = card.CardTarget;
+        cardInfoUI.text = card.CardInformation;
+    }
 }

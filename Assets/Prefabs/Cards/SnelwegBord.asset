@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9048cca6a7eec6e47a0815d76a764767, type: 3}
-  m_Name: Piramide
+  m_Name: SnelwegBord
   m_EditorClassIdentifier: Assembly-CSharp::BaseCard
-  CardName: Piramide
-  CardAmount: 15
-  CardPicture: {fileID: 21300000, guid: df8be145d2e5d46489340cc84bb86f51, type: 3}
-  CardTarget: Damage to Enemy
-  CardInformation: Harde attack op zn ma
+  CardName: SnelwegBord
+  CardAmount: 
+  CardPicture: {fileID: 21300000, guid: 44c957131d5a4cf44845dc78a78ee9fe, type: 3}
+  CardTarget: Blokt de attack
+  CardInformation: Blokkeert de attack v/d enemy

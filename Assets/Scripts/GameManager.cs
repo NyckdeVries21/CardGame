@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI whosTurn;
     [SerializeField] private GameObject PauseMenu;
     [SerializeField] private GameObject ResultScreen;
+    [SerializeField] private GameObject CardInv;
 
     [Header("Objects")]
     [SerializeField] public GameObject BlockObject;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
         //UI aan/uit zetten
         PauseMenu.SetActive(false);
         ResultScreen.SetActive(false);
+        CardInv.SetActive(true);
 
     }
 
@@ -61,16 +63,17 @@ public class GameManager : MonoBehaviour
 
     public void EndTurn()
     {
-        if (PlayersTurn == true)
+        if (PlayersTurn) 
         {
+            PlayersTurn = false; // nu enemy's beurt
+            CardInv.SetActive(false); 
             whosTurn.text = "Enemy's turn";
-            PlayersTurn = false;
-
-        } else if (PlayersTurn == false)
+        }
+        else 
         {
+            PlayersTurn = true; // nu speler aan de beurt
+            CardInv.SetActive(true); 
             whosTurn.text = "Your turn";
-            PlayersTurn = true;
-            
         }
     }
     public void UpdatePlayerHPBar()
