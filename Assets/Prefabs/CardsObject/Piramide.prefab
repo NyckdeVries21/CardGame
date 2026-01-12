@@ -693,7 +693,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8864195492844139689, guid: 932ff51e09a83a0498f8897888d81479, type: 3}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: Attack
+        m_MethodName: PiramideAttack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

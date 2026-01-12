@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Objects")]
     [SerializeField] public GameObject BlockObject;
+    [SerializeField] public GameObject HealObject;
+    [SerializeField] public List<GameObject> AttackObject;
     
  
     void Start()

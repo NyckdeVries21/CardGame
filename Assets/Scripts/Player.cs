@@ -12,19 +12,18 @@ public class Player : MonoBehaviour
     [Header("Transforms")]
     [SerializeField] private Transform spawnObject;
     [SerializeField] private Transform blockLoc;
+    [SerializeField] private Transform healLoc;
     
     private void Update()
     {
 
     }
-    public void Attack()
-    {
-        if ( !GameManager.instance.PlayersTurn) { return; }
-        GameManager.instance.EnemyHP -= AttackDamage;
-        GameManager.instance.UpdateEnemyHPBar();
-        Debug.Log("hoppa op je hoofd");
-        GameManager.instance.EndTurn();
-    }
+    //public void Attack()
+    //{
+    //    if ( !GameManager.instance.PlayersTurn) { return; }
+        
+    //    GameManager.instance.EndTurn();
+    //}
 
     public void Block()
     {
@@ -42,10 +41,18 @@ public class Player : MonoBehaviour
         {
             GameManager.instance.PlayerHP = 100;
         }
+        SpawnHealObject();
         GameManager.instance.PlayerHP +=  Heal;
         GameManager.instance.UpdatePlayerHPBar();
         Debug.Log("heal bro");
         GameManager.instance.EndTurn();
+    }
+
+    private void SpawnHealObject()
+    {
+        Instantiate(GameManager.instance.HealObject, healLoc.position, Quaternion.identity);
+        GameObject spawnedObject = GameObject.FindGameObjectWithTag("Heal");
+        Destroy(spawnedObject, 1f);
     }
 
     private void SpawnBlockobject()
@@ -54,6 +61,25 @@ public class Player : MonoBehaviour
         GameObject spawnedObject = GameObject.FindGameObjectWithTag("Block");
         Destroy(spawnedObject, 0.5f);
     }
+    public void BoomstamAttack()
+    {
+        if (!GameManager.instance.PlayersTurn) { return; }
+        Instantiate(GameManager.instance.AttackObject[0], spawnObject.position, Quaternion.identity);
+        GameManager.instance.EndTurn();
+    }
 
+    public void PiramideAttack()
+    {
+        if (!GameManager.instance.PlayersTurn) { return; }
+        Instantiate(GameManager.instance.AttackObject[1], spawnObject.position, Quaternion.identity);
+        GameManager.instance.EndTurn();
+    }
+
+    public void SteenAttack()
+    {
+        if (!GameManager.instance.PlayersTurn) { return; }
+        Instantiate(GameManager.instance.AttackObject[2], spawnObject.position, Quaternion.identity);
+        GameManager.instance.EndTurn();
+    }
 
 }
