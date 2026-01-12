@@ -69,8 +69,8 @@ public class GameManager : MonoBehaviour
             CardInv.SetActive(false); 
             whosTurn.text = "Enemy's turn";
         }
-        else 
-        {
+        else
+        { 
             PlayersTurn = true; // nu speler aan de beurt
             CardInv.SetActive(true); 
             whosTurn.text = "Your turn";

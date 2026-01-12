@@ -20,16 +20,22 @@ public class InventoryCards : MonoBehaviour
             cardGivenThisTurn = true;
             Debug.Log("Kaart toegevoegd!");
         }
-
-        if (!currentPlayersTurn && currentCard != null && cardGivenThisTurn)
+        else if (!currentPlayersTurn && currentCard != null && cardGivenThisTurn)
         {
             RemoveItem();
             cardGivenThisTurn = false;
             Debug.Log("Kaart verwijderd!");
         }
+
+        //if (!currentPlayersTurn && currentCard != null && cardGivenThisTurn)
+        //{
+        //    RemoveItem();
+        //    cardGivenThisTurn = false;
+        //    Debug.Log("Kaart verwijderd!");
+        //}
     }
 
-    void AddItem()
+    private void AddItem()
     {
         if (cards == null || cards.Count == 0)
         {
@@ -46,15 +52,10 @@ public class InventoryCards : MonoBehaviour
         rt.localScale = Vector3.one;
     }
 
-    void RemoveItem()
+    private void RemoveItem()
     {
-        if (currentCard != null)
-        {
-            Debug.Log("Verwijder: " + currentCard.name + " Parent: " + currentCard.transform.parent.name);
-            currentCard.transform.SetParent(null);
             Destroy(currentCard);
             currentCard = null;
-        }
     }
 }
 

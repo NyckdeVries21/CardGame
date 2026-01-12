@@ -23,4 +23,5 @@ public class CardUI : MonoBehaviour
         cardTargetUI.text = card.CardTarget;
         cardInfoUI.text = card.CardInformation;
     }
+
 }
