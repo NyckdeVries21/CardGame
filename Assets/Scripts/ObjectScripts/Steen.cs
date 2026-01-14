@@ -2,18 +2,17 @@ using UnityEngine;
 
 public class Steen : MonoBehaviour
 {
-    private float ObjSpeed = 5;
+    private float ObjSpeed = 12;
     private Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * ObjSpeed);
     }
 
     private void Update()
     {
-        rb.AddForce(transform.forward * ObjSpeed, ForceMode.Force);
+        transform.position += (transform.forward * ObjSpeed) * Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)

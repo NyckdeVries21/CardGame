@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -35,12 +36,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject BlockObject;
     [SerializeField] public GameObject HealObject;
     [SerializeField] public List<GameObject> AttackObject;
-    
- 
+
+    [Header("Stats")]
+    private int EnemyKilled;
+    private int CardsUsed;
+
+    [SerializeField] private TextMeshProUGUI statsUI;
+
+
     void Start()
     {
         PlayersTurn = true;
-        whosTurn.text = "Your turn";
+        whosTurn.text = "Jouw beurt";
 
         if (instance == null)
         {
@@ -58,9 +65,23 @@ public class GameManager : MonoBehaviour
     {
         if (ActiveEnemy == null)
         {
+            EnemyKilled++;
             SpawnEnemy();
             EnemyHP = maxHealth;
-        } 
+        }
+
+        if (Player == null)
+        {
+            ResultScreen.SetActive(true);
+            LoadStats();
+        }
+
+
+        if (Keyboard.current.escapeKey.isPressed)
+        {
+            PauseGame();
+            Time.timeScale = 0f;
+        }
     }
 
     public void EndTurn()
@@ -69,13 +90,13 @@ public class GameManager : MonoBehaviour
         {
             PlayersTurn = false; // nu enemy's beurt
             CardInv.SetActive(false); 
-            whosTurn.text = "Enemy's turn";
+            whosTurn.text = "Enemy z'n beurt";
         }
         else
         { 
             PlayersTurn = true; // nu speler aan de beurt
             CardInv.SetActive(true); 
-            whosTurn.text = "Your turn";
+            whosTurn.text = "Jouw beurt";
         }
     }
     public void UpdatePlayerHPBar()
@@ -106,5 +127,17 @@ public class GameManager : MonoBehaviour
         Instantiate(EnemyObject, EnemySpawnLoc.transform.position, EnemySpawnLoc.rotation);
         ActiveEnemy = GameObject.FindGameObjectWithTag("Enemy");
         Debug.Log("enemy spawned");
+    }
+
+    public void Continue()
+    {
+        ResultScreen.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    private void LoadStats()
+    {
+        statsUI.text = "Vijanden verslagen: " + EnemyKilled + "\n" +
+            "Kaarten gebruikt: " + CardsUsed;
     }
 }

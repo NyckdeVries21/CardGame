@@ -57,28 +57,28 @@ public class Player : MonoBehaviour
 
     private void SpawnBlockobject()
     {
-        Instantiate(GameManager.instance.BlockObject, blockLoc.transform.position, Quaternion.identity);
+        Instantiate(GameManager.instance.BlockObject, blockLoc.position, GameManager.instance.BlockObject.transform.rotation);
         GameObject spawnedObject = GameObject.FindGameObjectWithTag("Block");
         Destroy(spawnedObject, 0.5f);
     }
     public void BoomstamAttack()
     {
         if (!GameManager.instance.PlayersTurn) { return; }
-        Instantiate(GameManager.instance.AttackObject[0], spawnObject.position, Quaternion.identity);
+        Instantiate(GameManager.instance.AttackObject[0], spawnObject.position, GameManager.instance.AttackObject[0].transform.rotation);
         GameManager.instance.EndTurn();
     }
 
     public void PiramideAttack()
     {
         if (!GameManager.instance.PlayersTurn) { return; }
-        Instantiate(GameManager.instance.AttackObject[1], spawnObject.position, Quaternion.identity);
+        Instantiate(GameManager.instance.AttackObject[1], spawnObject.position, GameManager.instance.AttackObject[1].transform.rotation);
         GameManager.instance.EndTurn();
     }
 
     public void SteenAttack()
     {
         if (!GameManager.instance.PlayersTurn) { return; }
-        Instantiate(GameManager.instance.AttackObject[2], spawnObject.position, Quaternion.identity);
+        Instantiate(GameManager.instance.AttackObject[2], spawnObject.position, GameManager.instance.AttackObject[2].transform.rotation);
         GameManager.instance.EndTurn();
     }
 
