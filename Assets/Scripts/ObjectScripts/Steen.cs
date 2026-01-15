@@ -30,5 +30,10 @@ public class Steen : MonoBehaviour
             GameManager.instance.UpdatePlayerHPBar();
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Block"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

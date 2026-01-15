@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
     private GameManager gameManager;
 
     [Header("HP")]
-    private float AttackDamage = 10;
     private float Heal = 25;
 
     [Header("Transforms")]
@@ -26,12 +25,12 @@ public class Player : MonoBehaviour
     public void HealYourself()
     {
         if (!GameManager.instance.PlayersTurn) { return; }
+        SpawnHealObject();
+        GameManager.instance.PlayerHP +=  Heal;
         if (GameManager.instance.PlayerHP >= 100)
         {
             GameManager.instance.PlayerHP = 100;
         }
-        SpawnHealObject();
-        GameManager.instance.PlayerHP +=  Heal;
         GameManager.instance.UpdatePlayerHPBar();
         Debug.Log("heal bro");
         GameManager.instance.EndTurn();

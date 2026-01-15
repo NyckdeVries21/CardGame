@@ -6,7 +6,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("HP")]
-    private float AttackDamage = 10;
     private float Heal = 25;
 
     [Header("AI Setting")]
@@ -28,10 +27,10 @@ public class Enemy : MonoBehaviour
             StartCoroutine(EnemyTimer(EnemyTurnTimer));
         }
 
-        if (GameManager.instance.EnemyHP <= 0)
-        {
-            Destroy(gameObject);
-        }
+        //if (GameManager.instance.EnemyHP < 0)
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 
     private void UseCard()

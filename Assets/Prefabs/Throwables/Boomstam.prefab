@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 97302981927040752}
   - component: {fileID: 4215981989887776254}
   - component: {fileID: 1645527092616010383}
-  - component: {fileID: 6429641040268764916}
   - component: {fileID: -8345806592990818577}
   m_Layer: 0
   m_Name: Boomstam
@@ -144,29 +143,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &6429641040268764916
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1279091219182222266}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.50000024
-  m_Height: 2.0000005
-  m_Direction: 1
-  m_Center: {x: 0.00000005960464, y: 0, z: -0.00000008940699}
 --- !u!114 &-8345806592990818577
 MonoBehaviour:
   m_ObjectHideFlags: 0

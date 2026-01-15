@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
             EnemyKilled++;
             SpawnEnemy();
             EnemyHP = maxHealth;
+            UpdateEnemyHPBar();
         }
 
         if (Player == null)
@@ -77,6 +78,12 @@ public class GameManager : MonoBehaviour
             ResultScreen.SetActive(true);
             LoadStats();
         }
+
+        if(EnemyHP <=0)
+        {
+            Destroy(ActiveEnemy);
+        }
+
 
 
         if (Keyboard.current.escapeKey.isPressed)
