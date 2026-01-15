@@ -15,5 +15,5 @@ MonoBehaviour:
   CardName: Boomstam
   CardAmount: 10
   CardPicture: {fileID: 21300000, guid: f938e0ad5c4a6bd4d8aaf3afde66d885, type: 3}
-  CardTarget: Valt enemy aan
-  CardInformation: Rolt met een hoge snelheid
+  CardTarget: Schade op de tegenstander
+  CardInformation: Rolt naar de tegenstander toe

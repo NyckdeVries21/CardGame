@@ -45,6 +45,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI statsUI;
 
+    [Header("Scripts")]
+    [SerializeField] private InventoryCards InventoryCards;
+
 
     void Start()
     {
@@ -98,6 +101,7 @@ public class GameManager : MonoBehaviour
         if (PlayersTurn) 
         {
             PlayersTurn = false; // nu enemy's beurt
+            InventoryCards.RemoveItem();
             CardInv.SetActive(false); 
             whosTurn.text = "Enemy z'n beurt";
         }

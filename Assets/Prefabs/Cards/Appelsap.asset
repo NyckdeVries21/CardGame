@@ -16,4 +16,4 @@ MonoBehaviour:
   CardAmount: 25
   CardPicture: {fileID: 21300000, guid: 9ca443c8f6a3967489822e20d372f3e2, type: 3}
   CardTarget: Geeft je HP terug
-  CardInformation: Jajaja Appelsap, ik houd zo veel van Appelsap
+  CardInformation: '"Gezond" en hulpzaam om goed je schade terug te krijgen'

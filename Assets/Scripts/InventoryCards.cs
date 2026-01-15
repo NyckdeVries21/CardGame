@@ -12,18 +12,13 @@ public class InventoryCards : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.PlayersTurn && currentCard == null && !cardGivenThisTurn)
+        if (GameManager.instance.PlayersTurn && currentCard == null)
         {
             AddItem();
             Debug.Log("Kaart toegevoegd!");
         }
-        else if (!GameManager.instance.PlayersTurn && currentCard != null && cardGivenThisTurn)
-        {
-            RemoveItem();
-            Debug.Log("Kaart verwijderd!");
-        }
-
     }
+
 
     private void AddItem()
     {
@@ -34,20 +29,27 @@ public class InventoryCards : MonoBehaviour
         }
 
         GameObject cardPrefab = cards[Random.Range(0, cards.Count)];
-        GameObject card = Instantiate(cardPrefab, cardLocation);
+        GameObject card = Instantiate(cardPrefab);
+        card.transform.SetParent(cardLocation, false); 
         currentCard = card;
 
         RectTransform rt = card.GetComponent<RectTransform>();
         rt.anchoredPosition = Vector2.zero;
         rt.localScale = Vector3.one;
-        cardGivenThisTurn = true;
     }
 
-    private void RemoveItem()
+    public void RemoveItem()
     {
-        Destroy(currentCard);
-        currentCard = null;
-        cardGivenThisTurn = false;
+        if (currentCard != null)
+        {
+            Debug.Log("Destroying card: " + currentCard.name);
+            Destroy(currentCard);
+            currentCard = null;
+        }
+        else
+        {
+            Debug.Log("No card to destroy!");
+        }
     }
 }
 

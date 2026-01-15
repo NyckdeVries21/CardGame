@@ -16,4 +16,4 @@ MonoBehaviour:
   CardAmount: 8
   CardPicture: {fileID: 21300000, guid: da335543da87e0c48b2b9a49ba349bfa, type: 3}
   CardTarget: Valt enemy aan
-  CardInformation: Vliegt als een vogel tegen je grote vriend "enemy" aan
+  CardInformation: Vliegt als een vogel tegen de tegenstander aan

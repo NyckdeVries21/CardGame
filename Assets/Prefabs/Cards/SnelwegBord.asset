@@ -15,5 +15,5 @@ MonoBehaviour:
   CardName: SnelwegBord
   CardAmount: 
   CardPicture: {fileID: 21300000, guid: 44c957131d5a4cf44845dc78a78ee9fe, type: 3}
-  CardTarget: Blokt de attack
-  CardInformation: Blokkeert de attack v/d enemy
+  CardTarget: Blokkeert de aanval
+  CardInformation: Met de kracht van het bord kan ie de aanval tegen houden

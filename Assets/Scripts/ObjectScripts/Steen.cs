@@ -35,5 +35,10 @@ public class Steen : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Attack"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

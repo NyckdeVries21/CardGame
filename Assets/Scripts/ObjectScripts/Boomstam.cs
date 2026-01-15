@@ -36,5 +36,10 @@ public class Boomstam : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Attack"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
