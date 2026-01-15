@@ -12,7 +12,7 @@ public class Piramide : MonoBehaviour
 
     private void Update()
     {
-        transform.position += (transform.forward * ObjSpeed) * Time.deltaTime;
+        transform.position += transform.forward * ObjSpeed * Time.deltaTime;
     }
 
 

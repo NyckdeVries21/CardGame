@@ -19,8 +19,10 @@ public class GameManager : MonoBehaviour
 
     [Header("HP")]
     public float PlayerHP = 100;
+    [SerializeField] private TextMeshProUGUI PlayerHPText;
     [SerializeField] private Image PlayerHPBar;
     public float EnemyHP = 100;
+    [SerializeField] private TextMeshProUGUI EnemyHPText;
     [SerializeField] private Image EnemyHPBar;
     private float maxHealth = 100;
     public float AttackDamage;
@@ -102,11 +104,13 @@ public class GameManager : MonoBehaviour
     public void UpdatePlayerHPBar()
     {
         PlayerHPBar.fillAmount = PlayerHP / maxHealth;
+        PlayerHPText.text = "" + PlayerHP;
     }
 
     public void UpdateEnemyHPBar()
     {
         EnemyHPBar.fillAmount = EnemyHP / maxHealth;
+        EnemyHPText.text = "" + EnemyHP;
     }
 
     private void PauseGame()

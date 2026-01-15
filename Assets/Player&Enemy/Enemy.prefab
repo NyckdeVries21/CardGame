@@ -34,6 +34,7 @@ Transform:
   - {fileID: 5258904333629174192}
   - {fileID: 9102395093082368914}
   - {fileID: 6681650403853467201}
+  - {fileID: 8311518336508157799}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &4594070376207116144
@@ -48,6 +49,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbf14c88dce34f479d5dd86d7eec787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  Cards:
+  - {fileID: 3159117649943519078, guid: 9efa5dc8f685b7d43abfcf2665b0b7af, type: 3}
+  - {fileID: 5499359763059554340, guid: 3bf65a10559373740affa9e40f10d8ca, type: 3}
+  - {fileID: 3424640361894689255, guid: eac7c91c256377746988a6bd28b677ca, type: 3}
+  - {fileID: 1258252812967711836, guid: 7df190371c0365e4aa7f78eabbdb7466, type: 3}
+  - {fileID: 2317246441694526745, guid: d4874e822aac5764a9ad610cf6f7bd82, type: 3}
+  currentCard: {fileID: 0}
+  spawnObject: {fileID: 5258904333629174192}
+  blockLoc: {fileID: 9102395093082368914}
+  healLoc: {fileID: 8311518336508157799}
 --- !u!136 &4007466279841931346
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -67,10 +78,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25952214
-  m_Height: 2.1133494
+  m_Radius: 0.24588928
+  m_Height: 2.1133497
   m_Direction: 1
-  m_Center: {x: 1.8276403e-17, y: 0.5566747, z: 0.0065264106}
+  m_Center: {x: -2.56999e-17, y: 0.5566748, z: -0.0071064476}
 --- !u!1 &3259712953796997310
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,13 +106,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3259712953796997310}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.75}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1471925240262724276}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &4367140494568522973
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +138,38 @@ Transform:
   m_GameObject: {fileID: 4367140494568522973}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.68}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1471925240262724276}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7255227002743827744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8311518336508157799}
+  m_Layer: 0
+  m_Name: EnemyHeal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8311518336508157799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7255227002743827744}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 1.011, z: 0.339}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

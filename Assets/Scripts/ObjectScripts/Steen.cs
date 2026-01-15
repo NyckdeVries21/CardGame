@@ -12,7 +12,7 @@ public class Steen : MonoBehaviour
 
     private void Update()
     {
-        transform.position += (transform.forward * ObjSpeed) * Time.deltaTime;
+        transform.position += transform.forward * ObjSpeed * Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)
