@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using TMPro;
@@ -11,10 +12,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Player Settings")]
     [SerializeField] private GameObject Player;
+    [SerializeField] private GameObject ActivePlayer;
     [SerializeField] private GameObject ActiveEnemy;
     [SerializeField] private GameObject EnemyObject;
     public bool PlayersTurn = true;
 
+    [SerializeField] private Transform PlayerLoc;
     [SerializeField] private Transform EnemySpawnLoc;
 
     [Header("HP")]
@@ -46,13 +49,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI statsUI;
 
     [Header("Scripts")]
-    [SerializeField] private InventoryCards InventoryCards;
+    [SerializeField] private List<InventoryCards> InventoryCards;
+
+    [Header("Data")]
+    private float WaitTimer = 2;
 
 
     void Start()
     {
-        PlayersTurn = true;
-        whosTurn.text = "Jouw beurt";
+        ActivePlayer = GameObject.FindGameObjectWithTag("Player");
 
         if (instance == null)
         {
@@ -62,7 +67,6 @@ public class GameManager : MonoBehaviour
         //UI aan/uit zetten
         PauseMenu.SetActive(false);
         ResultScreen.SetActive(false);
-        CardInv.SetActive(true);
 
     }
 
@@ -71,9 +75,9 @@ public class GameManager : MonoBehaviour
         if (ActiveEnemy == null)
         {
             EnemyKilled++;
-            SpawnEnemy();
-            EnemyHP = maxHealth;
-            UpdateEnemyHPBar();
+            whosTurn.text = "Nieuwe enemy";
+            CardInv.SetActive(false);
+            StartCoroutine(EnemySpawns(WaitTimer));
         }
 
         if (Player == null)
@@ -101,7 +105,10 @@ public class GameManager : MonoBehaviour
         if (PlayersTurn) 
         {
             PlayersTurn = false; // nu enemy's beurt
-            InventoryCards.RemoveItem();
+            for(int i = 0; i < InventoryCards.Count; i++)
+            {
+                InventoryCards[i].RemoveItem();
+            }
             CardInv.SetActive(false); 
             whosTurn.text = "Enemy z'n beurt";
         }
@@ -129,18 +136,20 @@ public class GameManager : MonoBehaviour
         PauseMenu.SetActive(true);
         Time.timeScale = 0f;
     }
-    private void RoundFinished()
-    {
-        if( Player == null)
-        {
-            ResultScreen.SetActive(true);
-        }
-    }
 
     private void SpawnEnemy()
     {
         Instantiate(EnemyObject, EnemySpawnLoc.transform.position, EnemySpawnLoc.rotation);
         ActiveEnemy = GameObject.FindGameObjectWithTag("Enemy");
+        EnemyHP = 100;
+        Debug.Log("enemy spawned");
+    }
+
+    private void PlayerSpawn()
+    {
+        Instantiate(Player, PlayerLoc.transform.position, PlayerLoc.rotation);
+        ActivePlayer = GameObject.FindGameObjectWithTag("Player");
+        PlayerHP = 100;
         Debug.Log("enemy spawned");
     }
 
@@ -154,5 +163,25 @@ public class GameManager : MonoBehaviour
     {
         statsUI.text = "Vijanden verslagen: " + EnemyKilled + "\n" +
             "Kaarten gebruikt: " + CardsUsed;
+    }
+
+    private void StartRound()
+    {
+        SpawnEnemy();
+        PlayerSpawn();
+        UpdateEnemyHPBar();
+        UpdatePlayerHPBar();
+        EnemyKilled = 0;
+    }
+
+    IEnumerator EnemySpawns(float time)
+    {
+        SpawnEnemy();
+        UpdateEnemyHPBar();
+        
+        yield return new WaitForSeconds(time);
+        whosTurn.text = "Jouw beurt";
+        CardInv.SetActive(true);
+        PlayersTurn = true;
     }
 }

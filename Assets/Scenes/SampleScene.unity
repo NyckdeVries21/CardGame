@@ -1381,6 +1381,37 @@ MonoBehaviour:
   - {fileID: 2317246441694526745, guid: d4874e822aac5764a9ad610cf6f7bd82, type: 3}
   currentCard: {fileID: 0}
   cardGivenThisTurn: 0
+--- !u!1 &471052613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 471052614}
+  m_Layer: 0
+  m_Name: PlayerLoc
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &471052614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471052613}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -3.75, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &493793531
 GameObject:
   m_ObjectHideFlags: 0
@@ -3008,8 +3039,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 4211293783942383924, guid: a64f98d7a00501442ae40845562f1c20, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3566,9 +3597,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   Player: {fileID: 1055318435}
+  ActivePlayer: {fileID: 0}
   ActiveEnemy: {fileID: 0}
   EnemyObject: {fileID: 1198150869907596062, guid: b0f5ab3cea1e5c746aa3370d41c64768, type: 3}
   PlayersTurn: 1
+  PlayerLoc: {fileID: 471052614}
   EnemySpawnLoc: {fileID: 2111857246}
   PlayerHP: 100
   PlayerHPText: {fileID: 2140898798}
@@ -3589,7 +3622,10 @@ MonoBehaviour:
   - {fileID: 8652682829685396158, guid: 2a7b1ec2ce2299443b8bf93fd3d568e9, type: 3}
   - {fileID: 1037736539078422300, guid: cf91fe2dee1b4ff4d903de48bc539563, type: 3}
   statsUI: {fileID: 1172399057}
-  InventoryCards: {fileID: 745554195}
+  InventoryCards:
+  - {fileID: 745554195}
+  - {fileID: 457262647}
+  - {fileID: 1025692525}
 --- !u!4 &1404337106
 Transform:
   m_ObjectHideFlags: 0
@@ -3800,8 +3836,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: -6029991969101318831, guid: c77a20011fee4694cb75577a7509ffda, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3877,8 +3913,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 4211293783942383924, guid: a64f98d7a00501442ae40845562f1c20, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5235,6 +5271,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 393734815682487520, guid: 932ff51e09a83a0498f8897888d81479, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 465252192119432477, guid: 932ff51e09a83a0498f8897888d81479, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.75
@@ -5798,5 +5838,6 @@ SceneRoots:
   - {fileID: 60231295}
   - {fileID: 1223925553}
   - {fileID: 2111857246}
+  - {fileID: 471052614}
   - {fileID: 2054562408}
   - {fileID: 4213023130708184960}

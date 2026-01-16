@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     {
         Instantiate(GameManager.instance.BlockObject, blockLoc.transform.position, GameManager.instance.BlockObject.transform.rotation);
         GameObject spawnedObject = GameObject.FindGameObjectWithTag("Block");
-        Destroy(spawnedObject, 2f);
+        Destroy(spawnedObject, 3f);
     }
     public void BoomstamAttack()
     {

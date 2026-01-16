@@ -76,7 +76,8 @@ public class Enemy : MonoBehaviour
 
     private void HealYourself()
     {
-        if (GameManager.instance.PlayersTurn) { return; }
+        if (GameManager.instance.PlayersTurn) return; 
+
         if (GameManager.instance.EnemyHP >= 100)
         {
             GameManager.instance.EnemyHP = 100;
@@ -108,11 +109,12 @@ public class Enemy : MonoBehaviour
     {
         Instantiate(GameManager.instance.BlockObject, blockLoc.position, blockLoc.rotation);
         GameObject spawnedObject = GameObject.FindGameObjectWithTag("Block");
-        Destroy(spawnedObject, 2f);
+        Destroy(spawnedObject, 3f);
     }
     public void BoomstamAttack()
     {
-        Instantiate(GameManager.instance.AttackObject[0], spawnObject.position, spawnObject.rotation);
+        Quaternion BoomstamRotatie = Quaternion.Euler(0f, -90f, 90f);
+        Instantiate(GameManager.instance.AttackObject[0], spawnObject.position, BoomstamRotatie);
     }
 
     public void PiramideAttack()
