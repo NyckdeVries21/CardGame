@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject PauseMenu;
     [SerializeField] private GameObject ResultScreen;
     [SerializeField] private GameObject CardInv;
+    [SerializeField] private GameObject InGameUI;
 
     [Header("Objects")]
     [SerializeField] public GameObject BlockObject;
@@ -43,8 +44,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public List<GameObject> AttackObject;
 
     [Header("Stats")]
-    private int EnemyKilled;
-    private int CardsUsed;
+    public int EnemyKilled;
+    public int CardsUsed;
 
     [SerializeField] private TextMeshProUGUI statsUI;
 
@@ -52,7 +53,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<InventoryCards> InventoryCards;
 
     [Header("Data")]
-    private float WaitTimer = 2;
+    private float WaitTimer = 3;
+    private bool enemyIsSpawning = false;
 
 
     void Start()
@@ -68,27 +70,33 @@ public class GameManager : MonoBehaviour
         PauseMenu.SetActive(false);
         ResultScreen.SetActive(false);
 
+        EnemyKilled = -1;
     }
 
     void Update()
     {
-        if (ActiveEnemy == null)
+        if (ActiveEnemy == null && ActivePlayer != null && !enemyIsSpawning)
         {
+            enemyIsSpawning = true;
             EnemyKilled++;
             whosTurn.text = "Nieuwe enemy";
             CardInv.SetActive(false);
             StartCoroutine(EnemySpawns(WaitTimer));
         }
 
-        if (Player == null)
+        if (ActivePlayer == null)
         {
+            InGameUI.SetActive(false);
+            CardInv.SetActive(false);
             ResultScreen.SetActive(true);
             LoadStats();
         }
 
-        if(EnemyHP <=0)
+        if (EnemyHP <= 0 && ActiveEnemy != null)
         {
+            EnemyHP = 0;
             Destroy(ActiveEnemy);
+            ActiveEnemy = null;
         }
 
 
@@ -104,6 +112,7 @@ public class GameManager : MonoBehaviour
     {
         if (PlayersTurn) 
         {
+            CardsUsed++;
             PlayersTurn = false; // nu enemy's beurt
             for(int i = 0; i < InventoryCards.Count; i++)
             {
@@ -139,8 +148,7 @@ public class GameManager : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        Instantiate(EnemyObject, EnemySpawnLoc.transform.position, EnemySpawnLoc.rotation);
-        ActiveEnemy = GameObject.FindGameObjectWithTag("Enemy");
+        ActiveEnemy = Instantiate(EnemyObject, EnemySpawnLoc.transform.position, EnemySpawnLoc.rotation);
         EnemyHP = 100;
         Debug.Log("enemy spawned");
     }
@@ -165,23 +173,51 @@ public class GameManager : MonoBehaviour
             "Kaarten gebruikt: " + CardsUsed;
     }
 
-    private void StartRound()
+    public void StartRound()
     {
+        if (ActiveEnemy != null)
+        {
+            Destroy(ActiveEnemy);
+            ActiveEnemy = null;
+        }
+
+        ResultScreen.SetActive(false);
+        InGameUI.SetActive(true);
+
+        whosTurn.text = "Nieuwe game wordt opgestart";
+        whosTurn.fontSize = 20;
+
+        StartCoroutine(SetNewRound(WaitTimer));
+
         SpawnEnemy();
         PlayerSpawn();
+
         UpdateEnemyHPBar();
         UpdatePlayerHPBar();
-        EnemyKilled = 0;
+
+        EnemyKilled = -1;
+        PlayersTurn = true;
+
+        whosTurn.text = "Jouw beurt";
+        whosTurn.fontSize = 30;
+    }
+
+    IEnumerator SetNewRound(float time)
+    {
+        yield return new WaitForSeconds(time);
     }
 
     IEnumerator EnemySpawns(float time)
     {
+        yield return new WaitForSeconds(time);
+
         SpawnEnemy();
         UpdateEnemyHPBar();
-        
-        yield return new WaitForSeconds(time);
+
         whosTurn.text = "Jouw beurt";
         CardInv.SetActive(true);
         PlayersTurn = true;
+
+        enemyIsSpawning = false;
     }
 }

@@ -52,7 +52,8 @@ public class Player : MonoBehaviour
     public void BoomstamAttack()
     {
         if (!GameManager.instance.PlayersTurn) { return; }
-        Instantiate(GameManager.instance.AttackObject[0], spawnObject.transform.position, GameManager.instance.AttackObject[0].transform.rotation);
+        Vector3 BMSpawnPos = new Vector3(spawnObject.position.x, GameManager.instance.AttackObject[0].transform.position.y, spawnObject.position.z); 
+        Instantiate(GameManager.instance.AttackObject[0], BMSpawnPos, GameManager.instance.AttackObject[0].transform.rotation);
         GameManager.instance.EndTurn();
     }
 
