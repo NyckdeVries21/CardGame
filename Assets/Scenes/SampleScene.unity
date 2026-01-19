@@ -423,11 +423,11 @@ RectTransform:
   - {fileID: 264099517}
   - {fileID: 1771241091}
   - {fileID: 817563670}
-  - {fileID: 1216550267}
-  - {fileID: 871736012}
-  - {fileID: 2116159409}
   - {fileID: 1762859080}
+  - {fileID: 871736012}
+  - {fileID: 1216550267}
   - {fileID: 794776078}
+  - {fileID: 2116159409}
   - {fileID: 233289634}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
