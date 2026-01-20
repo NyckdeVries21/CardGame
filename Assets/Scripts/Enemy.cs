@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("HP")]
-    private float Heal = 25;
+    private float Heal = 18;
 
     [Header("AI Setting")]
     private float EnemyTurnTimer = 2;
@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
         {
             BezorgbusAttack();
             Debug.Log("Enemy Bezorgbus");
-        }else if (currentCard.name == "Appel")
+        }else if (currentCard.name == "Appel" && GameManager.instance.EnemyHP <= 75)
         {
             AppelHealYourself();
             Debug.Log("Enemy Appel");
@@ -141,7 +141,7 @@ public class Enemy : MonoBehaviour
     private void AppelHealObject()
     {
         Instantiate(GameManager.instance.HealObject[1], healLoc.position, healLoc.rotation);
-        GameObject spawnedObject = GameObject.FindGameObjectWithTag("Heal");
+        GameObject spawnedObject = GameObject.FindGameObjectWithTag("Appel");
         Destroy(spawnedObject, 1f);
     }
 

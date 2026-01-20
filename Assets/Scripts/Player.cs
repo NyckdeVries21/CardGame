@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     private GameManager gameManager;
 
     [Header("HP")]
-    private float Heal = 25;
+    private float Heal = 18;
 
     [Header("Transforms")]
     [SerializeField] private Transform spawnObject;
@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
     private void AppelHealObject()
     {
         Instantiate(GameManager.instance.HealObject[1], healLoc.position, healLoc.rotation);
-        GameObject spawnedObject = GameObject.FindGameObjectWithTag("Heal");
+        GameObject spawnedObject = GameObject.FindGameObjectWithTag("Appel");
         Destroy(spawnedObject, 1f);
     }
 

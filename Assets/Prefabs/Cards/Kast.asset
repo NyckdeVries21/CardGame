@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Kast
   m_EditorClassIdentifier: Assembly-CSharp::BaseCard
   CardName: Kast
-  CardAmount: 0
+  CardAmount: 
   CardPicture: {fileID: 21300000, guid: ae2ff46baf1d51045933d54bab63a63b, type: 3}
   CardTarget: Blokkeert de attack
   CardInformation: Ruimt de attack van de tegenstander op

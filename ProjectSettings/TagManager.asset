@@ -8,6 +8,8 @@ TagManager:
   - Block
   - Heal
   - Attack
+  - bullet
+  - Appel
   layers:
   - Default
   - TransparentFX

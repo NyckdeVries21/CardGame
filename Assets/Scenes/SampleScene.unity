@@ -6283,7 +6283,7 @@ MonoBehaviour:
   - {fileID: 7998171106624838250, guid: 86738aa4ef95128459694e02ce3c6ea9, type: 3}
   HealObject:
   - {fileID: 562730469}
-  - {fileID: 919132149155446097, guid: b0a9744a3a917f9499f4db4494901e15, type: 3}
+  - {fileID: 3618973416723973161, guid: eb331de6909c8404f9a6453006e34996, type: 3}
   AttackObject:
   - {fileID: 1279091219182222266, guid: 5064200872371c54b94c60091eb96ad0, type: 3}
   - {fileID: 8652682829685396158, guid: 2a7b1ec2ce2299443b8bf93fd3d568e9, type: 3}

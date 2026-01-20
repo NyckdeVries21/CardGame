@@ -581,7 +581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba330088ecd910d40b75282b71ccd005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardUI
-  card: {fileID: 11400000, guid: 346f191bcdf537344ad7604c174c4ef5, type: 2}
+  card: {fileID: 11400000, guid: d4236f759d43881429c831a97fa1a3a4, type: 2}
   cardNameUI: {fileID: 1897260169242545393}
   cardAmountUI: {fileID: 5886915572747875790}
   cardPictureUI: {fileID: 8559950348042101908}
