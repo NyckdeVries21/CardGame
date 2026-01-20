@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject InGameUI;
 
     [Header("Objects")]
-    [SerializeField] public GameObject BlockObject;
-    [SerializeField] public GameObject HealObject;
+    [SerializeField] public List<GameObject> BlockObject;
+    [SerializeField] public List<GameObject> HealObject;
     [SerializeField] public List<GameObject> AttackObject;
 
     [Header("Stats")]
@@ -195,11 +195,13 @@ public class GameManager : MonoBehaviour
         UpdateEnemyHPBar();
         UpdatePlayerHPBar();
 
-        EnemyKilled = -1;
+        CardsUsed = 0;
+        EnemyKilled = 0;
         PlayersTurn = true;
 
         whosTurn.text = "Jouw beurt";
         whosTurn.fontSize = 30;
+        CardInv.SetActive(true);
     }
 
     IEnumerator SetNewRound(float time)

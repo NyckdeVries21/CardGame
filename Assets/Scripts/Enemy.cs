@@ -60,6 +60,18 @@ public class Enemy : MonoBehaviour
         {
             SteenAttack();
             Debug.Log("Enemy Steen");
+        }else if (currentCard.name == "Bezorgbus")
+        {
+            BezorgbusAttack();
+            Debug.Log("Enemy Bezorgbus");
+        }else if (currentCard.name == "Appel")
+        {
+            AppelHealYourself();
+            Debug.Log("Enemy Appel");
+        }else if (currentCard.name == "Kast")
+        {
+            KastBlock();
+            Debug.Log("Enemy Appel");
         } else {return;}
 
         currentCard = null;
@@ -72,6 +84,12 @@ public class Enemy : MonoBehaviour
         // destroy
         Debug.Log("enemy blokt hen");
         SpawnBlockobject();
+    }private void KastBlock()
+    {
+        if (GameManager.instance.PlayersTurn) { return; }
+        // destroy
+        Debug.Log("enemy blokt hen");
+        KastBlockobject();
     }
 
     private void HealYourself()
@@ -89,6 +107,21 @@ public class Enemy : MonoBehaviour
 
     }
 
+    private void AppelHealYourself()
+    {
+        if (GameManager.instance.PlayersTurn) return;
+
+        if (GameManager.instance.EnemyHP >= 100)
+        {
+            GameManager.instance.EnemyHP = 100;
+        }
+        AppelHealObject();
+        GameManager.instance.EnemyHP += Heal;
+        Debug.Log("enemy healed oke");
+        GameManager.instance.UpdateEnemyHPBar();
+
+    }
+
     IEnumerator EnemyTimer(float time)
     {
         yield return new WaitForSeconds(time);
@@ -100,14 +133,27 @@ public class Enemy : MonoBehaviour
 
     private void SpawnHealObject()
     {
-        Instantiate(GameManager.instance.HealObject, healLoc.position, healLoc.rotation);
+        Instantiate(GameManager.instance.HealObject[1], healLoc.position, healLoc.rotation);
+        GameObject spawnedObject = GameObject.FindGameObjectWithTag("Heal");
+        Destroy(spawnedObject, 1f);
+    }
+
+    private void AppelHealObject()
+    {
+        Instantiate(GameManager.instance.HealObject[1], healLoc.position, healLoc.rotation);
         GameObject spawnedObject = GameObject.FindGameObjectWithTag("Heal");
         Destroy(spawnedObject, 1f);
     }
 
     private void SpawnBlockobject()
     {
-        Instantiate(GameManager.instance.BlockObject, blockLoc.position, blockLoc.rotation);
+        Instantiate(GameManager.instance.BlockObject[0], blockLoc.position, blockLoc.rotation);
+        GameObject spawnedObject = GameObject.FindGameObjectWithTag("Block");
+        Destroy(spawnedObject, 3f);
+    }
+    private void KastBlockobject()
+    {
+        Instantiate(GameManager.instance.BlockObject[1], blockLoc.position, blockLoc.rotation);
         GameObject spawnedObject = GameObject.FindGameObjectWithTag("Block");
         Destroy(spawnedObject, 3f);
     }
@@ -125,6 +171,12 @@ public class Enemy : MonoBehaviour
     public void SteenAttack()
     {
         Instantiate(GameManager.instance.AttackObject[2], spawnObject.position, spawnObject.rotation);
+    }
+
+    public void BezorgbusAttack()
+    {
+        Vector3 BusSpawn = new Vector3 ( spawnObject.position.x, 0, spawnObject.position .z );
+        Instantiate(GameManager.instance.AttackObject[3], BusSpawn, spawnObject.rotation);
     }
 
 }
