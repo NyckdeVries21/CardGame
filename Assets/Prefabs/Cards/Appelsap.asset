@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Appelsap
   m_EditorClassIdentifier: Assembly-CSharp::BaseCard
   CardName: Appelsap
-  CardAmount: 25
+  CardAmount: 18
   CardPicture: {fileID: 21300000, guid: 9ca443c8f6a3967489822e20d372f3e2, type: 3}
   CardTarget: Geeft je HP terug
   CardInformation: '"Gezond" en hulpzaam om goed je schade terug te krijgen'

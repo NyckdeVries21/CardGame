@@ -143,6 +143,7 @@ public class GameManager : MonoBehaviour
     private void PauseGame()
     {
         PauseMenu.SetActive(true);
+        CardInv.SetActive(false);
         Time.timeScale = 0f;
     }
 
@@ -163,7 +164,8 @@ public class GameManager : MonoBehaviour
 
     public void Continue()
     {
-        ResultScreen.SetActive(false);
+        PauseMenu.SetActive(false);
+        CardInv.SetActive(true);
         Time.timeScale = 1f;
     }
 

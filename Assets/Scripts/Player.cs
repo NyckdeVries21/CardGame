@@ -58,6 +58,19 @@ public class Player : MonoBehaviour
         Debug.Log("heal bro");
         GameManager.instance.EndTurn();
     }
+    public void AppelTaartHealYourself()
+    {
+        if (!GameManager.instance.PlayersTurn) { return; }
+        AppelTaartObject();
+        GameManager.instance.PlayerHP += Heal;
+        if (GameManager.instance.PlayerHP >= 100)
+        {
+            GameManager.instance.PlayerHP = 100;
+        }
+        GameManager.instance.UpdatePlayerHPBar();
+        Debug.Log("heal bro");
+        GameManager.instance.EndTurn();
+    }
 
     private void SpawnHealObject()
     {
@@ -70,6 +83,12 @@ public class Player : MonoBehaviour
     {
         Instantiate(GameManager.instance.HealObject[1], healLoc.position, healLoc.rotation);
         GameObject spawnedObject = GameObject.FindGameObjectWithTag("Appel");
+        Destroy(spawnedObject, 1f);
+    }
+    private void AppelTaartObject()
+    {
+        Instantiate(GameManager.instance.HealObject[2], healLoc.position, GameManager.instance.HealObject[2].transform.rotation);
+        GameObject spawnedObject = GameObject.FindGameObjectWithTag("AppelTaart");
         Destroy(spawnedObject, 1f);
     }
 
@@ -104,6 +123,12 @@ public class Player : MonoBehaviour
     {
         if (!GameManager.instance.PlayersTurn) { return; }
         Instantiate(GameManager.instance.AttackObject[2], spawnObject.transform.position, GameManager.instance.AttackObject[2].transform.rotation);
+        GameManager.instance.EndTurn();
+    }
+    public void WinkelkarAttack()
+    {
+        if (!GameManager.instance.PlayersTurn) { return; }
+        Instantiate(GameManager.instance.AttackObject[4], spawnObject.transform.position, spawnObject.rotation);
         GameManager.instance.EndTurn();
     }
 

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9048cca6a7eec6e47a0815d76a764767, type: 3}
-  m_Name: Appel
+  m_Name: Appeltaart
   m_EditorClassIdentifier: Assembly-CSharp::BaseCard
-  CardName: Appel
+  CardName: Appeltaart
   CardAmount: 18
-  CardPicture: {fileID: 21300000, guid: 3f9695b4952f506489510c337b8a14db, type: 3}
+  CardPicture: {fileID: 21300000, guid: 32abebc99cd60504cb0e946e53990be8, type: 3}
   CardTarget: Geeft je HP terug
-  CardInformation: Lekkere appel, net van de boom geplukt, goed voor je gezondheid
+  CardInformation: Net gebakken appeltaart vers uit de oven, niet al te gezond

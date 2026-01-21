@@ -10,6 +10,7 @@ TagManager:
   - Attack
   - bullet
   - Appel
+  - AppelTaart
   layers:
   - Default
   - TransparentFX

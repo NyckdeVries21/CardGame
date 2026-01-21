@@ -60,19 +60,33 @@ public class Enemy : MonoBehaviour
         {
             SteenAttack();
             Debug.Log("Enemy Steen");
-        }else if (currentCard.name == "Bezorgbus")
+        }
+        else if (currentCard.name == "Bezorgbus")
         {
             BezorgbusAttack();
             Debug.Log("Enemy Bezorgbus");
-        }else if (currentCard.name == "Appel" && GameManager.instance.EnemyHP <= 75)
+        }
+        else if (currentCard.name == "Appel" && GameManager.instance.EnemyHP <= 75)
         {
             AppelHealYourself();
             Debug.Log("Enemy Appel");
-        }else if (currentCard.name == "Kast")
+        }
+        else if (currentCard.name == "Kast")
         {
             KastBlock();
             Debug.Log("Enemy Appel");
-        } else {return;}
+        }
+        else if (currentCard.name == "AppelTaart" && GameManager.instance.EnemyHP <= 75)
+        {
+            AppelTaartHealYourself();
+            Debug.Log("Enemy taartAppel");
+        }
+        else if (currentCard.name == "Winkelkar")
+        {
+            WinkelkarAttack();
+            Debug.Log("Enemy winkelkar");
+        }
+        else { return; }
 
         currentCard = null;
         GameManager.instance.EndTurn();
@@ -121,6 +135,20 @@ public class Enemy : MonoBehaviour
         GameManager.instance.UpdateEnemyHPBar();
 
     }
+    private void AppelTaartHealYourself()
+    {
+        if (GameManager.instance.PlayersTurn) return;
+
+        if (GameManager.instance.EnemyHP >= 100)
+        {
+            GameManager.instance.EnemyHP = 100;
+        }
+        AppelTaartObject();
+        GameManager.instance.EnemyHP += Heal;
+        Debug.Log("enemy healed oke");
+        GameManager.instance.UpdateEnemyHPBar();
+
+    }
 
     IEnumerator EnemyTimer(float time)
     {
@@ -142,6 +170,12 @@ public class Enemy : MonoBehaviour
     {
         Instantiate(GameManager.instance.HealObject[1], healLoc.position, healLoc.rotation);
         GameObject spawnedObject = GameObject.FindGameObjectWithTag("Appel");
+        Destroy(spawnedObject, 1f);
+    }
+    private void AppelTaartObject()
+    {
+        Instantiate(GameManager.instance.HealObject[2], healLoc.position, GameManager.instance.HealObject[2].transform.rotation);
+        GameObject spawnedObject = GameObject.FindGameObjectWithTag("Appeltaart");
         Destroy(spawnedObject, 1f);
     }
 
@@ -177,6 +211,13 @@ public class Enemy : MonoBehaviour
     {
         Vector3 BusSpawn = new Vector3 ( spawnObject.position.x, 0, spawnObject.position .z );
         Instantiate(GameManager.instance.AttackObject[3], BusSpawn, spawnObject.rotation);
+    }
+
+    public void WinkelkarAttack()
+    {
+        if (!GameManager.instance.PlayersTurn) { return; }
+        Instantiate(GameManager.instance.AttackObject[4], spawnObject.transform.position, spawnObject.rotation);
+        GameManager.instance.EndTurn();
     }
 
 }

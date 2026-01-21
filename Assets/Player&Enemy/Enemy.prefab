@@ -58,6 +58,8 @@ MonoBehaviour:
   - {fileID: 6677302974695604852, guid: b5e1a6a6c05be814a92a0a1abd86a32c, type: 3}
   - {fileID: 4766497276903043819, guid: 5ca877aca8c1382459807e2dabced365, type: 3}
   - {fileID: 5967922140322938458, guid: 97e0339b3cbe72d4681baf046212aa7b, type: 3}
+  - {fileID: 2903284463093638773, guid: e1da201bee4b7df4e8d4f070d72c07a9, type: 3}
+  - {fileID: 114315937913996907, guid: fd72022718ed3d04991d9e23e0e87722, type: 3}
   currentCard: {fileID: 0}
   spawnObject: {fileID: 5258904333629174192}
   blockLoc: {fileID: 9102395093082368914}
