@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   Cards:
-  - {fileID: 3159117649943519078, guid: 9efa5dc8f685b7d43abfcf2665b0b7af, type: 3}
+  - {fileID: 2903284463093638773, guid: e1da201bee4b7df4e8d4f070d72c07a9, type: 3}
   - {fileID: 5499359763059554340, guid: 3bf65a10559373740affa9e40f10d8ca, type: 3}
   - {fileID: 3424640361894689255, guid: eac7c91c256377746988a6bd28b677ca, type: 3}
   - {fileID: 1258252812967711836, guid: 7df190371c0365e4aa7f78eabbdb7466, type: 3}
@@ -143,7 +143,7 @@ Transform:
   m_GameObject: {fileID: 4367140494568522973}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.68}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

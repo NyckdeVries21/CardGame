@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
     [Header("Data")]
     private float WaitTimer = 3;
     private bool enemyIsSpawning = false;
+    public GameObject PlayerSBO; // SBO = spawned block object
+    public GameObject EnemySBO;
 
 
     void Start()
@@ -120,12 +122,14 @@ public class GameManager : MonoBehaviour
             }
             CardInv.SetActive(false); 
             whosTurn.text = "Enemy z'n beurt";
+            Destroy(EnemySBO);
         }
         else
         { 
             PlayersTurn = true; // nu speler aan de beurt
             CardInv.SetActive(true); 
             whosTurn.text = "Jouw beurt";
+            Destroy(PlayerSBO);
         }
     }
     public void UpdatePlayerHPBar()

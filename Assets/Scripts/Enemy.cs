@@ -183,13 +183,13 @@ public class Enemy : MonoBehaviour
     {
         Instantiate(GameManager.instance.BlockObject[0], blockLoc.position, blockLoc.rotation);
         GameObject spawnedObject = GameObject.FindGameObjectWithTag("Block");
-        Destroy(spawnedObject, 3f);
+        GameManager.instance.EnemySBO = spawnedObject;
     }
     private void KastBlockobject()
     {
         Instantiate(GameManager.instance.BlockObject[1], blockLoc.position, blockLoc.rotation);
         GameObject spawnedObject = GameObject.FindGameObjectWithTag("Block");
-        Destroy(spawnedObject, 3f);
+        GameManager.instance.EnemySBO = spawnedObject;
     }
     public void BoomstamAttack()
     {
@@ -210,7 +210,8 @@ public class Enemy : MonoBehaviour
     public void BezorgbusAttack()
     {
         Vector3 BusSpawn = new Vector3 ( spawnObject.position.x, 0, spawnObject.position .z );
-        Instantiate(GameManager.instance.AttackObject[3], BusSpawn, spawnObject.rotation);
+        Quaternion BusRotatie = Quaternion.Euler(0f, -90f, 0f);
+        Instantiate(GameManager.instance.AttackObject[3], BusSpawn, BusRotatie );
     }
 
     public void WinkelkarAttack()

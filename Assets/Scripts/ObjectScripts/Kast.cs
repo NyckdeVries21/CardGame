@@ -5,7 +5,7 @@ public class Kast : MonoBehaviour
     private float deadTimer = 3;
     private void Update()
     {
-        Destroy(gameObject, deadTimer);
+        //Destroy(gameObject, deadTimer);
     }
     private void OnCollisionEnter(Collision collision)
     {
