@@ -122,24 +122,34 @@ public class GameManager : MonoBehaviour
             }
             CardInv.SetActive(false); 
             whosTurn.text = "Enemy z'n beurt";
-            Destroy(EnemySBO);
         }
         else
         { 
             PlayersTurn = true; // nu speler aan de beurt
             CardInv.SetActive(true); 
             whosTurn.text = "Jouw beurt";
-            Destroy(PlayerSBO);
         }
     }
     public void UpdatePlayerHPBar()
     {
+        if (PlayerHP <= 0)
+        {
+            Destroy(ActivePlayer);
+            PlayerHP = 0;
+        }
+
         PlayerHPBar.fillAmount = PlayerHP / maxHealth;
         PlayerHPText.text = "" + PlayerHP;
     }
 
     public void UpdateEnemyHPBar()
     {
+        if (EnemyHP <= 0)
+        {
+            Destroy(ActiveEnemy);
+            EnemyHP = 0;
+        }
+
         EnemyHPBar.fillAmount = EnemyHP / maxHealth;
         EnemyHPText.text = "" + EnemyHP;
     }

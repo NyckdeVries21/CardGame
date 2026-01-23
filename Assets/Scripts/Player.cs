@@ -96,13 +96,13 @@ public class Player : MonoBehaviour
     {
         Instantiate(GameManager.instance.BlockObject[0], blockLoc.transform.position, GameManager.instance.BlockObject[0].transform.rotation);
         GameObject spawnedObject = GameObject.FindGameObjectWithTag("Block");
-        GameManager.instance.PlayerSBO = spawnedObject;
+        Destroy(spawnedObject, 4f);
     }
     private void KastBlockobject()
     {
         Instantiate(GameManager.instance.BlockObject[1], blockLoc.transform.position, GameManager.instance.BlockObject[1].transform.rotation);
         GameObject spawnedObject = GameObject.FindGameObjectWithTag("Block");
-        GameManager.instance.PlayerSBO = spawnedObject;
+        Destroy (spawnedObject, 4f);
     }
     public void BoomstamAttack()
     {
@@ -129,6 +129,12 @@ public class Player : MonoBehaviour
     {
         if (!GameManager.instance.PlayersTurn) { return; }
         Instantiate(GameManager.instance.AttackObject[4], spawnObject.transform.position, spawnObject.rotation);
+        GameManager.instance.EndTurn();
+    }
+    public void WaterFlesAttack()
+    {
+        if (!GameManager.instance.PlayersTurn) { return; }
+        Instantiate(GameManager.instance.AttackObject[5], spawnObject.transform.position, spawnObject.rotation);
         GameManager.instance.EndTurn();
     }
 

@@ -60,6 +60,7 @@ MonoBehaviour:
   - {fileID: 5967922140322938458, guid: 97e0339b3cbe72d4681baf046212aa7b, type: 3}
   - {fileID: 2903284463093638773, guid: e1da201bee4b7df4e8d4f070d72c07a9, type: 3}
   - {fileID: 114315937913996907, guid: fd72022718ed3d04991d9e23e0e87722, type: 3}
+  - {fileID: 5871305172712892083, guid: 925663e388eca664aa3cb5f2b71ab85a, type: 3}
   currentCard: {fileID: 0}
   spawnObject: {fileID: 5258904333629174192}
   blockLoc: {fileID: 9102395093082368914}
@@ -142,13 +143,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4367140494568522973}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.078459114, w: 0.99691737}
   m_LocalPosition: {x: 0, y: 0.5, z: 0.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1471925240262724276}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 9}
 --- !u!1 &7255227002743827744
 GameObject:
   m_ObjectHideFlags: 0

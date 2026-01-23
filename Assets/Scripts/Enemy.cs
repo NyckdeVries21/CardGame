@@ -85,6 +85,11 @@ public class Enemy : MonoBehaviour
         {
             WinkelkarAttack();
             Debug.Log("Enemy winkelkar");
+        } 
+        else if (currentCard.name == "Waterfles")
+        {
+            WaterflesAttack();
+            Debug.Log("Enemy Waterfles");
         }
         else { return; }
 
@@ -183,13 +188,13 @@ public class Enemy : MonoBehaviour
     {
         Instantiate(GameManager.instance.BlockObject[0], blockLoc.position, blockLoc.rotation);
         GameObject spawnedObject = GameObject.FindGameObjectWithTag("Block");
-        GameManager.instance.EnemySBO = spawnedObject;
+        Destroy(spawnedObject, 4f);
     }
     private void KastBlockobject()
     {
         Instantiate(GameManager.instance.BlockObject[1], blockLoc.position, blockLoc.rotation);
         GameObject spawnedObject = GameObject.FindGameObjectWithTag("Block");
-        GameManager.instance.EnemySBO = spawnedObject;
+        Destroy(spawnedObject, 4f);
     }
     public void BoomstamAttack()
     {
@@ -216,9 +221,13 @@ public class Enemy : MonoBehaviour
 
     public void WinkelkarAttack()
     {
-        if (!GameManager.instance.PlayersTurn) { return; }
-        Instantiate(GameManager.instance.AttackObject[4], spawnObject.transform.position, spawnObject.rotation);
-        GameManager.instance.EndTurn();
+        Quaternion WinkelkarRotatie = Quaternion.Euler(0f, -90f, 0f);
+        Instantiate(GameManager.instance.AttackObject[4], spawnObject.transform.position, WinkelkarRotatie);
+    }
+    public void WaterflesAttack()
+    {
+        Quaternion WaterflesRotatie = Quaternion.Euler(0f, -90f, 0f);
+        Instantiate(GameManager.instance.AttackObject[5], spawnObject.transform.position, WaterflesRotatie);
     }
 
 }
